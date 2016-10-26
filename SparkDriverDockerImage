@@ -1,7 +1,10 @@
 #using the spark-docker image we just created as our base image
 FROM newyorker/spark
 
+RUN curl https://bintray.com/sbt/rpm/rpm | sudo tee /etc/yum.repos.d/bintray-sbt-rpm.repo
+RUN sudo yum install sbt
 
+RUN ["sbt", "clean compile package"]
 
 #yelp_academic_dataset_review_2.11-1.0.jar is our Fat Jar to be run; here I assume it’s in the same build context as the Dockerfile;
 COPY target/scala-2.11/yelp_academic_dataset_review_2.11-1.0.jar /opt/yelp_academic_dataset_review_2.11-1.0.jar

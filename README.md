@@ -4,6 +4,10 @@
 
 ``git clone https://github.com/kartik-dev/yelp_academic_dataset_review.git``
 
+Upload sample dataset
+
+``sh scripts/yelp-data-upload.sh /vagrant/resources/yelp_dataset_challenge_academic_dataset.tar``
+
 ##### 2. Dockerizing Spark - Build Spark Base docker Image
 
 ``docker build -t newyorker/spark -f SparkBaseDockerImage .``
