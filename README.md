@@ -1,11 +1,15 @@
-##### Submit Streaming spark job (for Scenario 4)
+##### Clone git repository
 
-`spark-submit --class com.demo.spark.ClickLogStreamingJob --master local[2]  ClickLogAnalytics-assembly-1.0.jar`
+git clone https://github.com/kartik-dev/yelp_academic_dataset_review.git
 
-`spark-submit --class com.demo.spark.ClickLogStreamingToHDFS --master local[2]  ClickLogAnalytics-assembly-1.0.jar`
+##### Build Spark Base docker Image
 
-##### Submit Batch spark job (for Scenario 5)
-`spark-submit --class com.demo.spark.ClickLogBatchJob --master local[2]  ClickLogAnalytics-assembly-1.0.jar`
+docker build -t newyorker/spark -f SparkBaseDockerImage .
 
-##### Create Kafka Topic
-`/home/vagrant/confluent-3.0.1/bin/kafka-topics --zookeeper 192.168.0.50:2181 --create --topic clicklog --partitions 1 --replication-factor 1`
+##### Spark Driver docker Image
+
+docker build -t newyorker/spark-driver -f SparkDriveDockerImage .
+
+##### Submit Spark application
+
+docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpReviewsByUser" newyorker/spark-driver 
