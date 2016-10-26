@@ -12,7 +12,7 @@ object YelpReviewsByUser {
       .config("spark.sql.warehouse.dir", warehouseLocation)
       .getOrCreate()
 
-    val df = spark.read.json("hdfs://192.168.0.50:9000/yelp-dataset/yelp_academic_dataset_review.json")
+    val df = spark.read.json("hdfs://192.168.0.50:8020/yelp-dataset/yelp_academic_dataset_review.json")
     df.show
 
     df.printSchema()
