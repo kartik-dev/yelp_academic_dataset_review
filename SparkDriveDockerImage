@@ -5,4 +5,4 @@ FROM newyorker/spark
 COPY target/scala-2.11/yelp_academic_dataset_review_2.11-1.0.jar /opt/yelp_academic_dataset_review_2.11-1.0.jar
  
 #calling the spark-submit command; with the --class argument being an input environment variable
-CMD /opt/spark/bin/spark-submit --class $SPARK_CLASS --master spark://master:7077 /opt/yelp_academic_dataset_review_2.11-1.0.jar
+CMD /opt/spark/bin/spark-submit --class $SPARK_CLASS --master local[1] /opt/yelp_academic_dataset_review_2.11-1.0.jar
