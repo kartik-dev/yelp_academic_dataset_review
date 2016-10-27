@@ -23,15 +23,6 @@
         <scala.compat.version>2.11</scala.compat.version>
     </properties>
 
-
-    <repositories>
-        <repository>
-            <id>mapr-releases</id>
-            <url>http://repository.mapr.com/maven</url>
-        </repository>
-    </repositories>
-
-
     <dependencies>
         <dependency>
             <groupId>log4j</groupId>
@@ -81,7 +72,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.goodgamestudios.grac.GRACParser</mainClass>
+                            <mainClass>com.demo.spark.YelpReviewsByUser</mainClass>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                         </manifest>
                     </archive>
