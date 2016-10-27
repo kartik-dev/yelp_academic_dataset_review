@@ -14969,7 +14969,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.apache.parquet#parquet-format;2.3.0-incubating!parquet-format.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.apache.parquet#parquet-jackson;1.7.0!parquet-jackson.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] jline#jline;2.12.1!jline.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 4389ms :: artifacts dl 222ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 4310ms :: artifacts dl 165ms[0m
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 compile produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 runtime produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 test produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-test.xml[0m
@@ -14983,5 +14983,5 @@
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 docs produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-docs.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 pom produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 scala-tool produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (4389ms resolve - 222ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (4310ms resolve - 165ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m

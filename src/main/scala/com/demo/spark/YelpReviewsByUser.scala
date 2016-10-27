@@ -15,6 +15,7 @@ object YelpReviewsByUser {
     val df = spark.read.json("hdfs://192.168.0.50:8020/yelp-dataset/yelp_academic_dataset_review.json")
     df.show
 
-    df.printSchema()
+    
+    
   }
 }

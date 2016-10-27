@@ -1,10 +1,16 @@
+## Yelp Dataset
+
+## Introduction
+
 ### Build Instructions
 
 ##### 1. Setup single node SMACK sandbox virtual machine
 
 Clone SMACK vagrant repository
 
-``git clone https://github.com/kartik-dev/SMACK-Sandbox.git``
+```
+git clone https://github.com/kartik-dev/SMACK-Sandbox.git
+```
 
 Bring up SMACK single node VM
 

@@ -1,1 +1,0 @@
-Index.PACKAGES = {"com" : [], "com.demo" : [], "com.demo.spark" : [{"object" : "com\/demo\/spark\/YelpReviewsByUser$.html", "name" : "com.demo.spark.YelpReviewsByUser"}]};
