@@ -21,21 +21,8 @@
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.11.7 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.11.7 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.11.7 {scala-tool=[default, optional(default)], compile=[default(compile)]}[0m
 [0m[[0minfo[0m] [0mResolving com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3 {compile=[default(compile)]}[0m
-[0m[[0minfo[0m] [0mResolving com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain-delegate: Checking cache for: dependency: com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3 {compile=[default(compile)]}[0m
-[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\com.datastax.spark\spark-cassandra-connector_2.11\2.0.0-M3\ivys\ivy.xml[0m
-[0m[[0mdebug[0m] [0m	local: no ivy file found for com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.pom[0m
-[0m[[0mdebug[0m] [0m	public: found md file for com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3[0m
-[0m[[0mdebug[0m] [0m		=> https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.pom (2.0.0-M3)[0m
-[0m[[0mdebug[0m] [0mdownloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.pom ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.pom[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.pom.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.pom[0m
-[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3!spark-cassandra-connector_2.11.pom(pom.original) (859ms)[0m
-[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\com.datastax.spark\spark-cassandra-connector_2.11\2.0.0-M3\jars\spark-cassandra-connector_2.11.jar[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.jar[0m
-[0m[[0mdebug[0m] [0m	found com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3 in public[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3[0m
+[0m[[0mdebug[0m] [0m	found com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies default#yelp_academic_dataset_review_2.11;1.0->com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies default#yelp_academic_dataset_review_2.11;1.0->com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3 [compile->compile][0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.11.8 {test=[runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.11.7 {test=[runtime(*), master(compile)]}[0m
@@ -80,41 +67,8 @@
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.11.7 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.11.7 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.11.7 {scala-tool=[default, optional(default)], compile=[default(compile)]}[0m
 [0m[[0minfo[0m] [0mResolving io.netty#netty-all;4.0.33.Final ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: io.netty#netty-all;4.0.33.Final {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
-[0m[[0minfo[0m] [0mResolving io.netty#netty-all;4.0.33.Final ...[0m
-[0m[[0mdebug[0m] [0msbt-chain-delegate: Checking cache for: dependency: io.netty#netty-all;4.0.33.Final {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
-[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\io.netty\netty-all\4.0.33.Final\ivys\ivy.xml[0m
-[0m[[0mdebug[0m] [0m	local: no ivy file found for io.netty#netty-all;4.0.33.Final[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.pom[0m
-[0m[[0mdebug[0m] [0m	public: found md file for io.netty#netty-all;4.0.33.Final[0m
-[0m[[0mdebug[0m] [0m		=> https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.pom (4.0.33.Final)[0m
-[0m[[0mdebug[0m] [0mdownloading https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.pom ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.pom[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.pom.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.pom[0m
-[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] io.netty#netty-all;4.0.33.Final!netty-all.pom(pom.original) (176ms)[0m
-[0m[[0minfo[0m] [0mResolving io.netty#netty-parent;4.0.33.Final ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: io.netty#netty-parent;4.0.33.Final {}[0m
-[0m[[0minfo[0m] [0mResolving io.netty#netty-parent;4.0.33.Final ...[0m
-[0m[[0mdebug[0m] [0msbt-chain-delegate: Checking cache for: dependency: io.netty#netty-parent;4.0.33.Final {}[0m
-[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\io.netty\netty-parent\4.0.33.Final\ivys\ivy.xml[0m
-[0m[[0mdebug[0m] [0m	local: no ivy file found for io.netty#netty-parent;4.0.33.Final[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/io/netty/netty-parent/4.0.33.Final/netty-parent-4.0.33.Final.pom[0m
-[0m[[0mdebug[0m] [0m	public: found md file for io.netty#netty-parent;4.0.33.Final[0m
-[0m[[0mdebug[0m] [0m		=> https://repo1.maven.org/maven2/io/netty/netty-parent/4.0.33.Final/netty-parent-4.0.33.Final.pom (4.0.33.Final)[0m
-[0m[[0mdebug[0m] [0mdownloading https://repo1.maven.org/maven2/io/netty/netty-parent/4.0.33.Final/netty-parent-4.0.33.Final.pom ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/io/netty/netty-parent/4.0.33.Final/netty-parent-4.0.33.Final.pom[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/io/netty/netty-parent/4.0.33.Final/netty-parent-4.0.33.Final.pom.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for https://repo1.maven.org/maven2/io/netty/netty-parent/4.0.33.Final/netty-parent-4.0.33.Final.pom[0m
-[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] io.netty#netty-parent;4.0.33.Final!netty-parent.pom(pom.original) (267ms)[0m
-[0m[[0minfo[0m] [0mResolving org.sonatype.oss#oss-parent;9 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.sonatype.oss#oss-parent;9 {}[0m
-[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.sonatype.oss#oss-parent;9[0m
-[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\io.netty\netty-parent\4.0.33.Final\jars\netty-parent.jar[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/io/netty/netty-parent/4.0.33.Final/netty-parent-4.0.33.Final.jar[0m
-[0m[[0mdebug[0m] [0mCLIENT ERROR: Not Found url=https://repo1.maven.org/maven2/io/netty/netty-parent/4.0.33.Final/netty-parent-4.0.33.Final.jar[0m
-[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\io.netty\netty-all\4.0.33.Final\jars\netty-all.jar[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.jar[0m
-[0m[[0mdebug[0m] [0m	found io.netty#netty-all;4.0.33.Final in public[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: io.netty#netty-all;4.0.33.Final[0m
+[0m[[0mdebug[0m] [0m	found io.netty#netty-all;4.0.33.Final in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3->io.netty#netty-all;4.0.33.Final [compile->compile(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3->io.netty#netty-all;4.0.33.Final [compile->runtime(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3->io.netty#netty-all;4.0.33.Final [compile->compile][0m
@@ -138,24 +92,8 @@
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.11.7 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.11.7 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.11.7 {scala-tool=[default, optional(default)], compile=[default(compile)]}[0m
 [0m[[0minfo[0m] [0mResolving commons-beanutils#commons-beanutils;1.8.0 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: commons-beanutils#commons-beanutils;1.8.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
-[0m[[0minfo[0m] [0mResolving commons-beanutils#commons-beanutils;1.8.0 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain-delegate: Checking cache for: dependency: commons-beanutils#commons-beanutils;1.8.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
-[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\commons-beanutils\commons-beanutils\1.8.0\ivys\ivy.xml[0m
-[0m[[0mdebug[0m] [0m	local: no ivy file found for commons-beanutils#commons-beanutils;1.8.0[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.pom[0m
-[0m[[0mdebug[0m] [0m	public: found md file for commons-beanutils#commons-beanutils;1.8.0[0m
-[0m[[0mdebug[0m] [0m		=> https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.pom (1.8.0)[0m
-[0m[[0mdebug[0m] [0mdownloading https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.pom ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.pom[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.pom.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.pom[0m
-[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] commons-beanutils#commons-beanutils;1.8.0!commons-beanutils.pom(pom.original) (145ms)[0m
-[0m[[0minfo[0m] [0mResolving org.apache.commons#commons-parent;11 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.apache.commons#commons-parent;11 {}[0m
-[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.apache.commons#commons-parent;11[0m
-[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\commons-beanutils\commons-beanutils\1.8.0\jars\commons-beanutils.jar[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.jar[0m
-[0m[[0mdebug[0m] [0m	found commons-beanutils#commons-beanutils;1.8.0 in public[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: commons-beanutils#commons-beanutils;1.8.0[0m
+[0m[[0mdebug[0m] [0m	found commons-beanutils#commons-beanutils;1.8.0 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3->commons-beanutils#commons-beanutils;1.8.0 [compile->compile(*)][0m
 [0m[[0mdebug[0m] [0mexcluding dependency: commons-logging#commons-logging;1.1.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} in compile[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3->commons-beanutils#commons-beanutils;1.8.0 [compile->runtime(*)][0m
@@ -200,21 +138,8 @@
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.11.7 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.11.7 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.11.7 {scala-tool=[default, optional(default)], compile=[default(compile)]}[0m
 [0m[[0minfo[0m] [0mResolving com.twitter#jsr166e;1.1.0 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.twitter#jsr166e;1.1.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
-[0m[[0minfo[0m] [0mResolving com.twitter#jsr166e;1.1.0 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain-delegate: Checking cache for: dependency: com.twitter#jsr166e;1.1.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}[0m
-[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\com.twitter\jsr166e\1.1.0\ivys\ivy.xml[0m
-[0m[[0mdebug[0m] [0m	local: no ivy file found for com.twitter#jsr166e;1.1.0[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.pom[0m
-[0m[[0mdebug[0m] [0m	public: found md file for com.twitter#jsr166e;1.1.0[0m
-[0m[[0mdebug[0m] [0m		=> https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.pom (1.1.0)[0m
-[0m[[0mdebug[0m] [0mdownloading https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.pom ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.pom[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.pom.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.pom[0m
-[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] com.twitter#jsr166e;1.1.0!jsr166e.pom(pom.original) (163ms)[0m
-[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\com.twitter\jsr166e\1.1.0\jars\jsr166e.jar[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.jar[0m
-[0m[[0mdebug[0m] [0m	found com.twitter#jsr166e;1.1.0 in public[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.twitter#jsr166e;1.1.0[0m
+[0m[[0mdebug[0m] [0m	found com.twitter#jsr166e;1.1.0 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3->com.twitter#jsr166e;1.1.0 [compile->compile(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3->com.twitter#jsr166e;1.1.0 [compile->runtime(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3->com.twitter#jsr166e;1.1.0 [compile->compile][0m
@@ -16077,33 +16002,27 @@
 [0m[[0mdebug[0m] [0m	resolved ivy file produced in cache[0m
 [0m[[0mdebug[0m] [0m:: downloading artifacts ::[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-library;2.11.7!scala-library.jar[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.jar[0m
-[0m[[0minfo[0m] [0mdownloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.jar ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.jar[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.jar.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3.jar[0m
-[0m[[0minfo[0m] [0m	[SUCCESSFUL ] com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3!spark-cassandra-connector_2.11.jar (3027ms)[0m
+[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\com.datastax.spark\spark-cassandra-connector_2.11\2.0.0-M3\srcs\spark-cassandra-connector_2.11-sources.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3!spark-cassandra-connector_2.11.jar[0m
+[0m[[0mdebug[0m] [0m		tried C:\Users\karti\.ivy2\local\com.datastax.spark\spark-cassandra-connector_2.11\2.0.0-M3\docs\spark-cassandra-connector_2.11-javadoc.jar[0m
+[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3-sources.jar[0m
+[0m[[0minfo[0m] [0mdownloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3-sources.jar ...[0m
+[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3-sources.jar[0m
+[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3-sources.jar.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3-sources.jar[0m
+[0m[[0minfo[0m] [0m	[SUCCESSFUL ] com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3!spark-cassandra-connector_2.11.jar(src) (2995ms)[0m
+[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3-javadoc.jar[0m
+[0m[[0minfo[0m] [0mdownloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3-javadoc.jar ...[0m
+[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3-javadoc.jar[0m
+[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3-javadoc.jar.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for https://repo1.maven.org/maven2/com/datastax/spark/spark-cassandra-connector_2.11/2.0.0-M3/spark-cassandra-connector_2.11-2.0.0-M3-javadoc.jar[0m
+[0m[[0minfo[0m] [0m	[SUCCESSFUL ] com.datastax.spark#spark-cassandra-connector_2.11;2.0.0-M3!spark-cassandra-connector_2.11.jar(doc) (2442ms)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.google.code.gson#gson;2.3!gson.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] joda-time#joda-time;2.8.2!joda-time.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.joda#joda-convert;1.7!joda-convert.jar[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.jar[0m
-[0m[[0minfo[0m] [0mdownloading https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.jar ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.jar[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.jar.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for https://repo1.maven.org/maven2/io/netty/netty-all/4.0.33.Final/netty-all-4.0.33.Final.jar[0m
-[0m[[0minfo[0m] [0m	[SUCCESSFUL ] io.netty#netty-all;4.0.33.Final!netty-all.jar (1355ms)[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.jar[0m
-[0m[[0minfo[0m] [0mdownloading https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.jar ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.jar[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.jar.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for https://repo1.maven.org/maven2/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.jar[0m
-[0m[[0minfo[0m] [0m	[SUCCESSFUL ] commons-beanutils#commons-beanutils;1.8.0!commons-beanutils.jar (249ms)[0m
-[0m[[0mdebug[0m] [0m		tried https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.jar[0m
-[0m[[0minfo[0m] [0mdownloading https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.jar ...[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.jar[0m
-[0m[[0mdebug[0m] [0m	public: downloading https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.jar.sha1[0m
-[0m[[0mdebug[0m] [0msha1 OK for https://repo1.maven.org/maven2/com/twitter/jsr166e/1.1.0/jsr166e-1.1.0.jar[0m
-[0m[[0minfo[0m] [0m	[SUCCESSFUL ] com.twitter#jsr166e;1.1.0!jsr166e.jar (169ms)[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] io.netty#netty-all;4.0.33.Final!netty-all.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] commons-beanutils#commons-beanutils;1.8.0!commons-beanutils.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.twitter#jsr166e;1.1.0!jsr166e.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-reflect;2.11.7!scala-reflect.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.apache.spark#spark-core_2.11;2.0.0!spark-core_2.11.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.apache.spark#spark-sql_2.11;2.0.0!spark-sql_2.11.jar[0m
@@ -16238,7 +16157,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.apache.parquet#parquet-format;2.3.0-incubating!parquet-format.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.apache.parquet#parquet-jackson;1.7.0!parquet-jackson.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] jline#jline;2.12.1!jline.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 11622ms :: artifacts dl 5005ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 4286ms :: artifacts dl 5664ms[0m
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 compile produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 runtime produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 test produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-test.xml[0m
@@ -16252,5 +16171,5 @@
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 docs produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-docs.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 pom produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yelp_academic_dataset_review_2.11;1.0 scala-tool produced in C:\Users\karti\workspace\yelp_academic_dataset_review\target\resolution-cache\reports\default-yelp_academic_dataset_review_2.11-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (11622ms resolve - 5005ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (4286ms resolve - 5664ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m

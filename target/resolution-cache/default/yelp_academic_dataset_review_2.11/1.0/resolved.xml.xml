@@ -4,7 +4,7 @@
 		module="yelp_academic_dataset_review_2.11"
 		revision="1.0"
 		status="integration"
-		publication="20161027130807"
+		publication="20161027164520"
 	>
 		<description>
 		Yelp_academic_dataset_review
@@ -36,7 +36,11 @@
 		<dependency org="org.scala-lang" name="scala-library" rev="2.11.7" conf="scala-tool->default,optional(default);compile->default(compile)"/>
 		<dependency org="org.apache.spark" name="spark-core_2.11" rev="2.0.0" conf="provided->default(compile)"/>
 		<dependency org="org.apache.spark" name="spark-sql_2.11" rev="2.0.0" conf="provided->default(compile)"/>
-		<dependency org="com.datastax.spark" name="spark-cassandra-connector_2.11" rev="2.0.0-M3" conf="compile->default(compile)"/>
+		<dependency org="com.datastax.spark" name="spark-cassandra-connector_2.11" rev="2.0.0-M3" conf="compile->default(compile)">
+			<artifact name="spark-cassandra-connector_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+			<artifact name="spark-cassandra-connector_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+			<artifact name="spark-cassandra-connector_2.11" type="jar" ext="jar" conf="*"/>
+		</dependency>
 		<dependency org="com.google.code.gson" name="gson" rev="2.3" conf="compile->default(compile)"/>
 		<dependency org="joda-time" name="joda-time" rev="2.8.2" conf="compile->default(compile)"/>
 		<dependency org="org.joda" name="joda-convert" rev="1.7" conf="compile->default(compile)"/>

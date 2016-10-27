@@ -6,6 +6,9 @@
 *.exe
 *.o
 *.so
+target/
+project/
+.cache-main
 
 # Packages #
 ############

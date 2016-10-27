@@ -1,17 +1,19 @@
 #using the spark-docker image we just created as our base image
 FROM newyorker/spark
 
-WORKDIR /code
+# WORKDIR /code
 
-ADD pom.xml /code/pom.xml
-RUN ["mvn", "clean"]
+# ADD pom.xml /code/pom.xml
+# RUN ["mvn", "clean"]
 
 # Adding source, compile and package into a fat jar
-ADD src /code/src
+# ADD src /code/src
 
-RUN ["mvn", "compile"]
-RUN ["mvn", "package"]
+# RUN ["mvn", "compile"]
+# RUN ["mvn", "package"]
+
+#app.jar is our Fat Jar to be run; here we assume it’s in the same build context as the Dockerfile;
+COPY target/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar /opt/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar
 
 #calling the spark-submit command; with the --class argument being an input environment variable
-
-CMD /opt/spark/bin/spark-submit --class $SPARK_CLASS --master local[1] /code/target/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar
+CMD /opt/spark/bin/spark-submit --class $SPARK_CLASS --master local[1] /opt/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar

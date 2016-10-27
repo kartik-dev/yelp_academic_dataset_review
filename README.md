@@ -2,6 +2,8 @@
 
 ## Introduction
 
+Upload yelp_academic_dataset_review into HDFS for analytics. yelp-data-upload-to-HDFS.sh file will take tar file as parameter and upload extracted json files to HDFS
+
 Another very interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
 ### Build Instructions
@@ -16,7 +18,7 @@ git clone https://github.com/kartik-dev/SMACK-Sandbox.git
 
 Bring up SMACK single node VM
 
-This might take time,since it downloads and installs hadoop, mesos, spark, cassandra, nifi, confluent-io platform and Zeppelin
+This might take time (Approx 10 to 15mins),since it downloads and installs hadoop, mesos, spark, cassandra, nifi, confluent-io platform and Zeppelin
 
 ```
 vagrant up
@@ -32,7 +34,7 @@ username: root``
 password: vagrant
 ```
 
-##### 2. Clone git repository
+##### 2. Clone yelp_academic_dataset_review repository
 
 ```
 git clone https://github.com/kartik-dev/yelp_academic_dataset_review.git
@@ -43,9 +45,10 @@ Upload sample dataset
 ```
 cd yelp_academic_dataset_review ``
 
-sh scripts/yelp-data-upload-to-HDFS.sh /vagrant/resources/yelp_dataset_challenge_academic_dataset.tar
+sh scripts/yelp-data-upload-to-HDFS.sh <tar file path(i.e /vagrant/resources/yelp_dataset_challenge_academic_dataset.tar)>
 
 ```
+-- You could still use the file /vagrant/resources/yelp_dataset_challenge_academic_dataset.tar for testing.
 
 ##### 3. Dockerizing Spark - Build Spark Base docker Image
 
@@ -61,13 +64,15 @@ Note that this will take a while when you start it for the first time since it d
 
 The pom.xml contains a very basic Maven configuration. It configures the Spark 2.0 dependencies using a Java 1.8 compiler and creates a fat jar with all the dependencies.
 
-sbt build tool could be used in place of maven. This could be easily replaced in Dockerfile
+sbt build tool could be used in place of maven. This could be easily be replaced in Dockerfile
 
 ```
 docker build -t newyorker/spark-driver -f SparkDriverDockerImage .
 ```
 
 ##### 5. Setup docker network for spark
+
+Here we’re running the default bridge mode and mapping ports into the container.  
 
 ```
 docker network create spark_network;

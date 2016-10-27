@@ -13,7 +13,7 @@ object CassandraLoader {
       .builder()
       .appName("Yelp academic dataset example")
       .config("spark.sql.warehouse.dir", warehouseLocation)
-      .config("spark.cassandra.connection.host", "192.168.0.50")
+      .config("spark.cassandra.connection.host", "127.0.0.1")
       .getOrCreate()
 
     val df = spark.read.json("hdfs://192.168.0.50:8020/yelp-dataset/yelp_academic_dataset_review.json")

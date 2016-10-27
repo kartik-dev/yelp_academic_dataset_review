@@ -10,7 +10,7 @@ libraryDependencies += "org.apache.spark" %% "spark-core" % sparkVersion  % "pro
 
 libraryDependencies  += "org.apache.spark" % "spark-sql_2.11" % sparkVersion % "provided"
 
-libraryDependencies += "com.datastax.spark" %% "spark-cassandra-connector" % "2.0.0-M3" 
+libraryDependencies += "com.datastax.spark" %% "spark-cassandra-connector" % "2.0.0-M3" withSources() withJavadoc()
 
 libraryDependencies  += "com.google.code.gson" % "gson" % "2.3"
 
