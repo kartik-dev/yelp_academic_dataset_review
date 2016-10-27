@@ -14,7 +14,7 @@ RUN ["mvn", "install"]
 
 #yelp_academic_dataset_review_2.11-1.0.jar is our Fat Jar to be run; here I assume it<92>s in the same build context as the Dockerfile;
 
-COPY /tmp/target/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar /opt/yelp_academic_dataset_review.jar
+COPY target/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar /opt/yelp_academic_dataset_review.jar
 
 #calling the spark-submit command; with the --class argument being an input environment variable
 
