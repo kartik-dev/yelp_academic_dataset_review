@@ -2,6 +2,7 @@
 
 ## Introduction
 
+Another very interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
 ### Build Instructions
 
