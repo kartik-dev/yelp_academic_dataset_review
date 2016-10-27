@@ -1,9 +1,9 @@
 #using the spark-docker image we just created as our base image
 FROM newyorker/spark
 
-WORKDIR /tmp
+WORKDIR /code
 
-ADD pom.xml /tmp/pom.xml
+ADD pom.xml /code/pom.xml
 RUN ["mvn", "clean"]
 
 # Adding source, compile and package into a fat jar
