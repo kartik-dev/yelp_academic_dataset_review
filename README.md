@@ -1,6 +1,7 @@
-## Yelp Dataset
+## Yelp Dataset Challenge
 
 ## Introduction
+
 
 ### Build Instructions
 
