@@ -42,7 +42,7 @@ Upload sample dataset
 ```
 cd yelp_academic_dataset_review ``
 
-sh scripts/yelp-data-upload.sh /vagrant/resources/yelp_dataset_challenge_academic_dataset.tar
+sh scripts/yelp-data-upload-to-HDFS.sh /vagrant/resources/yelp_dataset_challenge_academic_dataset.tar
 
 ```
 
