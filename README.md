@@ -14,6 +14,8 @@ Upload sample dataset
 
 ##### 3. Build docker image of Spark Driver Image
 
+Note that this will take a while when you start it for the first time since it downloads and installs sbt and downloads all the project’s dependencies. Every subsequent start of this build will only take a few seconds, as again everything will be already cached
+
 ``docker build -t newyorker/spark-driver -f SparkDriverDockerImage .``
 
 ##### 4. Setup docker network for spark
