@@ -1,18 +1,18 @@
 ## Yelp Dataset Challenge
 
-## Introduction
+### Introduction
 
 This application uploads yelp_academic_dataset_review into HDFS for analytics. yelp-data-upload-to-HDFS.sh file will take tar file as parameter and upload extracted json files to HDFS
 
 Another very interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
-## Architecture
+### Architecture
 
 HDFS => Spark => Cassandra => Visualization Tool
 
 Yelp => Kafka => Spark Streaming => Cassandra/HDFS => Visualization Tools 
 
-## SMACK Sandbox
+### SMACK Sandbox
 
 Please refer to https://github.com/kartik-dev/SMACK-Sandbox for more information on SMACK-Sandbox
 
@@ -24,7 +24,7 @@ newyorker/spark-zeppelin
 
 newyorker/spark-driver
  
-### Installation
+## Installation
 
 ##### 1. Setup single node SMACK sandbox virtual machine
 
