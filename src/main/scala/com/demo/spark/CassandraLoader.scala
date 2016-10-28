@@ -18,6 +18,7 @@ object CassandraLoader {
       .config("spark.cassandra.connection.host", "127.0.0.1")
       .getOrCreate()
 
+    spark.sparkContext.setLogLevel("ERROR")
     val df = spark.read.json("hdfs://192.168.0.50:8020/yelp-dataset/yelp_academic_dataset_review.json")
 
     df.show()
