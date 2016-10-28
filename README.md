@@ -45,6 +45,8 @@ Bring up SMACK single node VM
 This might take some time (Approx 10 to 15mins),since it downloads and installs hadoop, mesos, spark, cassandra, nifi, confluent-io platform and Zeppelin
 
 ```
+cd SMACK-Sandbox
+
 vagrant up
 ```
 
