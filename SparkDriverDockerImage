@@ -1,17 +1,6 @@
 #using the spark-docker image we just created as our base image
 FROM kramalingam/spark
 
-# WORKDIR /code
-
-# ADD pom.xml /code/pom.xml
-# RUN ["mvn", "clean"]
-
-# Adding source, compile and package into a fat jar
-# ADD src /code/src
-
-# RUN ["mvn", "compile"]
-# RUN ["mvn", "package"]
-
 #app.jar is our Fat Jar to be run; here we assume it’s in the same build context as the Dockerfile;
 COPY target/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar /opt/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar
 
