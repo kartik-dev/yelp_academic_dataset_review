@@ -12,6 +12,15 @@ HDFS => Spark => Cassandra => Visualization Tool
 
 Yelp => Kafka => Spark Streaming => Cassandra/HDFS => Visualization Tools 
 
+
+## Docker Images
+
+newyorker/spark
+
+newyorker/spark-zeppelin
+
+newyorker/spark-driver
+ 
 ### Installation
 
 ##### 1. Setup single node SMACK sandbox virtual machine
