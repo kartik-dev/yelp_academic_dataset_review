@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Upload yelp_academic_dataset_review into HDFS for analytics. yelp-data-upload-to-HDFS.sh file will take tar file as parameter and upload extracted json files to HDFS
+This application uploads yelp_academic_dataset_review into HDFS for analytics. yelp-data-upload-to-HDFS.sh file will take tar file as parameter and upload extracted json files to HDFS
 
 Another very interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
@@ -11,7 +11,6 @@ Another very interesting use-case, is to include web-based notebooks that enable
 HDFS => Spark => Cassandra => Visualization Tool
 
 Yelp => Kafka => Spark Streaming => Cassandra/HDFS => Visualization Tools 
-
 
 ## Docker Images
 
@@ -62,10 +61,9 @@ Upload sample dataset
 ```
 cd yelp_academic_dataset_review ``
 
-sh scripts/yelp-data-upload-to-HDFS.sh <tar file path(i.e /vagrant/resources/yelp_dataset_challenge_academic_dataset.tar)>
+sh scripts/yelp-data-upload-to-HDFS.sh <tar file path>
 
 ```
--- You could still use the file /vagrant/resources/yelp_dataset_challenge_academic_dataset.tar for testing.
 
 ##### 3. Dockerizing Spark - Build Spark Base docker Image
 
