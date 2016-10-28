@@ -97,9 +97,11 @@ docker network create spark_network;
 
 ##### 6. Bring up Cassandra
 
+```
 export PATH=$PATH:/usr/local/cassandra/bin
 
 cassandra -R &
+
 ```
 
 ##### 7. Submit Spark application
