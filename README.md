@@ -90,33 +90,25 @@ sbt build tool could be used in place of maven. This could be easily be replaced
 docker build -t newyorker/spark-driver -f SparkDriverDockerImage .
 ```
 
-#### 5. Setup docker network for spark
-
-Here we’re are going to run in default bridge mode and mapping ports into the container.  
-
-```
-docker network create spark_network;
-```
-
-#### 6. Bring up Cassandra
-
+#### 5. Bring up Cassandra
 ```
 export PATH=$PATH:/usr/local/cassandra/bin
 
 cassandra -R &
 ```
 
-#### 7. Submit Spark application
+#### 6. Submit Spark application
 Once the image is built, submit spark application. Spark application will be deployed on standalone spark. This could be changed by changing the spark master URL
 
 -- Aggregate reviews by user
  
 ```
+docker network create spark_network;
+
 docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpReviewsByUser" newyorker/spark-driver 
 ``` 
 
-#### 8. Build and run spark-zeppelin for adhoc analysis
-
+#### 7. Build and run spark-zeppelin container for adhoc analysis
 ```
 docker build -t newyorker/spark-zeppelin -f SparkZeppelinDockerImage .
 
