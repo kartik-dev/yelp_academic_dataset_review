@@ -26,7 +26,7 @@ newyorker/spark-driver
  
 ## Installation
 
-##### 1. Setup single node SMACK sandbox virtual machine
+#### 1. Setup single node SMACK sandbox virtual machine
 
 Clone SMACK vagrant repository
 
@@ -52,7 +52,7 @@ username: root
 password: vagrant
 ```
 
-##### 2. Yelp Dataset challenge - Clone yelp_academic_dataset_review repository
+#### 2. Yelp Dataset challenge - Clone yelp_academic_dataset_review repository
 
 ```
 cd /root
@@ -70,7 +70,7 @@ cd yelp_academic_dataset_review
 sh scripts/yelp-data-upload-to-HDFS.sh <tar file path>
 ```
 
-##### 3. Dockerizing Spark - Build Spark Base docker Image
+#### 3. Dockerizing Spark - Build Spark Base docker Image
 
 Downloads base java 8 image and installs spark 2.0 binaries.
 
@@ -78,7 +78,7 @@ Downloads base java 8 image and installs spark 2.0 binaries.
 docker build -t newyorker/spark -f SparkBaseDockerImage .
 ```
 
-##### 4. Dockerizing Spark Driver - Build docker image of Spark Driver Application
+#### 4. Dockerizing Spark Driver - Build docker image of Spark Driver Application
 
 Note that this will take a while when you start it for the first time since it downloads and installs maven and downloads all the project’s dependencies. Every subsequent start of this build will only take a few seconds, as again everything will be already cached
 
@@ -90,7 +90,7 @@ sbt build tool could be used in place of maven. This could be easily be replaced
 docker build -t newyorker/spark-driver -f SparkDriverDockerImage .
 ```
 
-##### 5. Setup docker network for spark
+#### 5. Setup docker network for spark
 
 Here we’re are going to run in default bridge mode and mapping ports into the container.  
 
@@ -98,7 +98,7 @@ Here we’re are going to run in default bridge mode and mapping ports into the co
 docker network create spark_network;
 ```
 
-##### 6. Bring up Cassandra
+#### 6. Bring up Cassandra
 
 ```
 export PATH=$PATH:/usr/local/cassandra/bin
@@ -106,7 +106,7 @@ export PATH=$PATH:/usr/local/cassandra/bin
 cassandra -R &
 ```
 
-##### 7. Submit Spark application
+#### 7. Submit Spark application
 Once the image is built, submit spark application. Spark application will be deployed on standalone spark. This could be changed by changing the spark master URL
 
 -- Aggregate reviews by user
@@ -115,7 +115,7 @@ Once the image is built, submit spark application. Spark application will be dep
 docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpReviewsByUser" newyorker/spark-driver 
 ``` 
 
-##### 8. Build and run spark-zeppelin for adhoc analysis
+#### 8. Build and run spark-zeppelin for adhoc analysis
 
 ```
 docker build -t newyorker/spark-zeppelin -f SparkZeppelinDockerImage .
@@ -125,4 +125,9 @@ docker run --rm -p 8080:8080 newyorker/spark-zeppelin &
 
 Zeppelin will be running at http://192.168.0.50:8080
 
-Please see sample zeppelin notebook 
+Please see sample zeppelin notebook
+
+## Things to improve
+- [ ] Deploy spark on Mesos Cluster Manager with Marathon for better resource utilization and high availability 
+- [ ] Deploy Spark driver application with Marathon for spark driver fault tolerance and high availability  
+- [ ] Use of Dataflow tools like NiFi, StreamSets for enabling accelerated data collection, curation, analysis and delivery in real-time 
