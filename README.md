@@ -32,13 +32,13 @@ git clone https://github.com/kartik-dev/SMACK-Sandbox.git
 
 Bring up SMACK single node VM
 
-This might take time (Approx 10 to 15mins),since it downloads and installs hadoop, mesos, spark, cassandra, nifi, confluent-io platform and Zeppelin
+This might take some time (Approx 10 to 15mins),since it downloads and installs hadoop, mesos, spark, cassandra, nifi, confluent-io platform and Zeppelin
 
 ```
 vagrant up
 ```
 
-ssh to smack vm (use putty)
+Once ready, ssh to smack vm (use putty)
 
 ```
 ip: 192.168.0.50
@@ -51,12 +51,16 @@ password: vagrant
 ##### 2. Clone yelp_academic_dataset_review repository
 
 ```
+
+cd /root
+
 git clone https://github.com/kartik-dev/yelp_academic_dataset_review.git
+
 ```
 
 Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
 
-Upload sample dataset
+Upload dataset into HDFS with scripts/yelp-data-upload-to-HDFS.sh
 
 ```
 cd yelp_academic_dataset_review ``
@@ -73,7 +77,7 @@ Downloads base java 8 image and installs spark 2.0 binaries.
 docker build -t newyorker/spark -f SparkBaseDockerImage .
 ```
 
-##### 4. Build docker image of Spark Driver Image
+##### 4. Dockerizing Spark Driver - Build docker image of Spark Driver Application
 
 Note that this will take a while when you start it for the first time since it downloads and installs maven and downloads all the project’s dependencies. Every subsequent start of this build will only take a few seconds, as again everything will be already cached
 
