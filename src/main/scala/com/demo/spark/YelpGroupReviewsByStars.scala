@@ -9,6 +9,7 @@ object YelpGroupReviewsByStars {
     val spark = SparkSession
       .builder()
       .appName("Yelp academic dataset example")
+      .config("spark.cassandra.connection.host", "127.0.0.1")
       .config("spark.sql.warehouse.dir", warehouseLocation)
       .getOrCreate()
 
@@ -19,8 +20,13 @@ object YelpGroupReviewsByStars {
     val outputDF1 = inputDF
       .groupBy(inputDF("stars")) // Group by stars
       .count // Aggregate distinct hotels
-      .withColumnRenamed("count", "count of stars")
+      .withColumnRenamed("count", "stars_count")
 
     outputDF1.show
+    
+    outputDF1.write
+      .format("org.apache.spark.sql.cassandra")
+      .options(Map("table" -> "reviews_fact", "keyspace" -> "yelp_dataset"))
+      .save()
   }
 }
