@@ -6,7 +6,13 @@ Upload yelp_academic_dataset_review into HDFS for analytics. yelp-data-upload-to
 
 Another very interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
-### Build Instructions
+## Architecture
+
+HDFS => Spark => Cassandra => Visualization Tool
+
+Yelp => Kafka => Spark Streaming => Cassandra/HDFS => Visualization Tools 
+
+### Installation
 
 ##### 1. Setup single node SMACK sandbox virtual machine
 
@@ -39,6 +45,8 @@ password: vagrant
 ```
 git clone https://github.com/kartik-dev/yelp_academic_dataset_review.git
 ```
+
+Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
 
 Upload sample dataset
 
@@ -76,6 +84,10 @@ Here we’re running the default bridge mode and mapping ports into the container.
 
 ```
 docker network create spark_network;
+
+export PATH=$PATH:/usr/local/cassandra/bin
+
+cassandra -R &
 ```
 
 ##### 6. Submit Spark application
