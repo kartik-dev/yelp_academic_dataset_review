@@ -8,8 +8,10 @@ Another very interesting use-case, is to include web-based notebooks that enable
 
 ### Architecture
 
+Current Architecture Design:
 HDFS => Spark => Cassandra => Visualization Tool
 
+Proposed Future Architecture:
 Yelp => Kafka => Spark Streaming => Cassandra/HDFS => Visualization Tools 
 
 ### SMACK Sandbox
