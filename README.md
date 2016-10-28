@@ -12,6 +12,10 @@ HDFS => Spark => Cassandra => Visualization Tool
 
 Yelp => Kafka => Spark Streaming => Cassandra/HDFS => Visualization Tools 
 
+## SMACK Sandbox
+
+Please refer to https://github.com/kartik-dev/SMACK-Sandbox for more information on SMACK-Sandbox
+
 ## Docker Images
 
 newyorker/spark
