@@ -88,23 +88,7 @@ or (pull the image from docker-io registry)
 docker pull kramalingam/spark
 ```
 
-#### 4. Dockerizing Spark Driver - Build docker image of Spark Driver Application
-
-Note that this will take a while when you start it for the first time since it downloads and installs maven and downloads all the project’s dependencies. Every subsequent start of this build will only take a few seconds, as again everything will be already cached
-
-The pom.xml contains a very basic Maven configuration. It configures the Spark 2.0 dependencies using a Java 1.8 compiler and creates a fat jar with all the dependencies.
-
-sbt build tool could be used in place of maven. This could be easily be replaced in Dockerfile
-
-```
-cd /root/yelp_academic_dataset_review
-
-mvn clean compile package
-
-docker build -t kramalingam/spark-driver -f SparkDriverDockerImage .
-```
-
-#### 5. Bring up Cassandra
+#### 4. Bring up Cassandra
 ```
 export PATH=$PATH:/usr/local/cassandra/bin
 
@@ -113,14 +97,19 @@ cp /vagrant/resources/cassandra/cassandra.yaml /usr/local/cassandra/conf/
 cassandra -R &
 ```
 
-open cqlsh
+setup cassandra tables
 
 ```
-cqlsh 192.168.0.50 9042
+ cqlsh 192.168.0.50 -f scripts/cassandra-query.cql
 ```
 
-#### 6. Submit Spark application
-Once the image is built, submit spark application. Spark application will be deployed on standalone spark. This could be changed by changing the spark master URL
+#### 5. Dockerizing Spark Driver - Build docker image of Spark Driver Application
+
+Note that this will take a while when you start it for the first time since it downloads and installs maven and downloads all the project’s dependencies. Every subsequent start of this build will only take a few seconds, as again everything will be already cached
+
+The pom.xml contains a very basic Maven configuration. It configures the Spark 2.0 dependencies using a Java 1.8 compiler and creates a fat jar with all the dependencies.
+
+sbt build tool could be used in place of maven. This could be easily be replaced in Dockerfile
 
 Setup docker network for spark driver
 
@@ -130,21 +119,33 @@ docker network create spark_network;
 -- Count reviews by stars
  
 ```
+docker pull kramalingam/spark-driver
+
 docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" kramalingam/spark-driver 
 ``` 
 
-#### 7. Build and run spark-zeppelin container for adhoc analysis
+To rebuild the spark driver image:
 ```
-docker build -t kramalingam/spark-zeppelin -f SparkZeppelinDockerImage .
+cd /root/yelp_academic_dataset_review
 
-or (pull the image from docker-io registry)
+mvn clean compile package
 
+docker build -t kramalingam/spark-driver -f SparkDriverDockerImage .
+```
+Once the image is built, submit spark application. Spark application will be deployed on standalone spark. This could be changed by changing the spark master URL
+
+#### 6. Build and run spark-zeppelin container for adhoc analysis
+```
 docker pull kramalingam/spark-zeppelin
 
 docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
 ```
+Zeppelin will be running at http://192.168.0.50:8080 and sample zeppelin notebook scripts/YelpReviewDataset.json
 
-Zeppelin will be running at http://192.168.0.50:8080
+To build the image locally:
+```
+docker build -t kramalingam/spark-zeppelin -f SparkZeppelinDockerImage .
+```
 
 ## Things to improve
 - [ ] Deploy spark on Mesos Cluster Manager with Marathon for better resource utilization and high availability 
