@@ -2,7 +2,9 @@
 
 ### Introduction
 
-This application uploads yelp_academic_dataset_review into HDFS for analytics. yelp-data-upload-to-HDFS.sh file will take tar file as parameter and upload extracted json files to HDFS
+This application uploads yelp_academic_dataset_review dataset into HDFS for analytics and create spark dataframe to query the data.
+
+<b>yelp-data-upload-to-HDFS.sh</b> script will take dataset tar file as parameter and upload extracted json files to HDFS
 
 Another very interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
@@ -22,11 +24,11 @@ Please refer to https://github.com/kartik-dev/SMACK-Sandbox for more information
 
 ## Docker Images
 
-kramalingam/spark
+kramalingam/spark - Dockerized spark binaries as base image for driver application to use
 
-kramalingam/spark-zeppelin
+kramalingam/spark-zeppelin - Dockerized zeppelin for beautiful data-driven, interactive and collaborative documents with SQL, Scala
 
-kramalingam/spark-driver
+kramalingam/spark-driver - Dockerized spark driver application with 
  
 ## Installation
 
@@ -56,7 +58,7 @@ username: root
 password: vagrant
 ```
 
-#### 2. Yelp Dataset challenge - Clone yelp_academic_dataset_review repository
+#### 2. Yelp Dataset challenge spark application souce code - Clone yelp_academic_dataset_review repository
 
 ```
 cd /root
@@ -80,6 +82,10 @@ Downloads base java 8 image and installs spark 2.0 binaries.
 
 ```
 docker build -t kramalingam/spark -f SparkBaseDockerImage .
+
+or (pull the image from docker-io registry)
+
+docker pull kramalingam/spark
 ```
 
 #### 4. Dockerizing Spark Driver - Build docker image of Spark Driver Application
@@ -91,6 +97,10 @@ The pom.xml contains a very basic Maven configuration. It configures the Spark 2
 sbt build tool could be used in place of maven. This could be easily be replaced in Dockerfile
 
 ```
+cd /root/yelp_academic_dataset_review
+
+mvn clean compile package
+
 docker build -t kramalingam/spark-driver -f SparkDriverDockerImage .
 ```
 
@@ -98,30 +108,43 @@ docker build -t kramalingam/spark-driver -f SparkDriverDockerImage .
 ```
 export PATH=$PATH:/usr/local/cassandra/bin
 
+cp /vagrant/resources/cassandra/cassandra.yaml /usr/local/cassandra/conf/
+ 
 cassandra -R &
+```
+
+open cqlsh
+
+```
+cqlsh 192.168.0.50 9042
 ```
 
 #### 6. Submit Spark application
 Once the image is built, submit spark application. Spark application will be deployed on standalone spark. This could be changed by changing the spark master URL
 
--- Aggregate reviews by user
- 
+Setup docker network for spark driver
+
 ```
 docker network create spark_network;
-
-docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpReviewsByUser" kramalingam/spark-driver 
+``` 
+-- Count reviews by stars
+ 
+```
+docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" kramalingam/spark-driver 
 ``` 
 
 #### 7. Build and run spark-zeppelin container for adhoc analysis
 ```
 docker build -t kramalingam/spark-zeppelin -f SparkZeppelinDockerImage .
 
+or (pull the image from docker-io registry)
+
+docker pull kramalingam/spark-zeppelin
+
 docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
 ```
 
 Zeppelin will be running at http://192.168.0.50:8080
-
-Please see sample zeppelin notebook
 
 ## Things to improve
 - [ ] Deploy spark on Mesos Cluster Manager with Marathon for better resource utilization and high availability 
