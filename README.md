@@ -9,9 +9,11 @@ Another very interesting use-case, is to include web-based notebooks that enable
 ### Architecture
 
 Current Architecture Design:
+
 HDFS => Spark => Cassandra => Visualization Tool
 
 Proposed Future Architecture:
+
 Yelp => Kafka => Spark Streaming => Cassandra/HDFS => Visualization Tools 
 
 ### SMACK Sandbox
@@ -20,11 +22,11 @@ Please refer to https://github.com/kartik-dev/SMACK-Sandbox for more information
 
 ## Docker Images
 
-newyorker/spark
+kramalingam/spark
 
-newyorker/spark-zeppelin
+kramalingam/spark-zeppelin
 
-newyorker/spark-driver
+kramalingam/spark-driver
  
 ## Installation
 
@@ -77,7 +79,7 @@ sh scripts/yelp-data-upload-to-HDFS.sh <tar file path>
 Downloads base java 8 image and installs spark 2.0 binaries.
 
 ```
-docker build -t newyorker/spark -f SparkBaseDockerImage .
+docker build -t kramalingam/spark -f SparkBaseDockerImage .
 ```
 
 #### 4. Dockerizing Spark Driver - Build docker image of Spark Driver Application
@@ -89,7 +91,7 @@ The pom.xml contains a very basic Maven configuration. It configures the Spark 2
 sbt build tool could be used in place of maven. This could be easily be replaced in Dockerfile
 
 ```
-docker build -t newyorker/spark-driver -f SparkDriverDockerImage .
+docker build -t kramalingam/spark-driver -f SparkDriverDockerImage .
 ```
 
 #### 5. Bring up Cassandra
@@ -107,14 +109,14 @@ Once the image is built, submit spark application. Spark application will be dep
 ```
 docker network create spark_network;
 
-docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpReviewsByUser" newyorker/spark-driver 
+docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpReviewsByUser" kramalingam/spark-driver 
 ``` 
 
 #### 7. Build and run spark-zeppelin container for adhoc analysis
 ```
-docker build -t newyorker/spark-zeppelin -f SparkZeppelinDockerImage .
+docker build -t kramalingam/spark-zeppelin -f SparkZeppelinDockerImage .
 
-docker run --rm -p 8080:8080 newyorker/spark-zeppelin &
+docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
 ```
 
 Zeppelin will be running at http://192.168.0.50:8080

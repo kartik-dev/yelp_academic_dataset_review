@@ -1,5 +1,5 @@
 #using the spark-docker image we just created as our base image
-FROM newyorker/spark
+FROM kramalingam/spark
 
 # WORKDIR /code
 
