@@ -44,7 +44,7 @@ ssh to smack vm (use putty)
 ```
 ip: 192.168.0.50
 
-username: root``
+username: root
 
 password: vagrant
 ```
@@ -89,17 +89,20 @@ docker build -t newyorker/spark-driver -f SparkDriverDockerImage .
 
 ##### 5. Setup docker network for spark
 
-Here we’re running the default bridge mode and mapping ports into the container.  
+Here we’re are going to run in default bridge mode and mapping ports into the container.  
 
 ```
 docker network create spark_network;
+```
+
+##### 6. Bring up Cassandra
 
 export PATH=$PATH:/usr/local/cassandra/bin
 
 cassandra -R &
 ```
 
-##### 6. Submit Spark application
+##### 7. Submit Spark application
 Once the image is built, submit spark application. Spark application will be deployed on standalone spark. This could be changed by changing the spark master URL
 
 -- Aggregate reviews by user
@@ -107,3 +110,15 @@ Once the image is built, submit spark application. Spark application will be dep
 ```
 docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpReviewsByUser" newyorker/spark-driver 
 ``` 
+
+##### 8. Build and run spark-zeppelin for adhoc analysis
+
+```
+docker build -t newyorker/spark-zeppelin -f SparkZeppelinDockerImage .
+
+docker run --rm -p 8080:8080 newyorker/spark-zeppelin &
+```
+
+Zeppelin will be running at http://192.168.0.50:8080
+
+Please see sample zeppelin notebook 
