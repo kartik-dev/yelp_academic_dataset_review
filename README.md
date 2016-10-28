@@ -52,14 +52,12 @@ username: root
 password: vagrant
 ```
 
-##### 2. Clone yelp_academic_dataset_review repository
+##### 2. Yelp Dataset challenge - Clone yelp_academic_dataset_review repository
 
 ```
-
 cd /root
 
 git clone https://github.com/kartik-dev/yelp_academic_dataset_review.git
-
 ```
 
 Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
@@ -67,10 +65,9 @@ Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
 Upload dataset into HDFS with scripts/yelp-data-upload-to-HDFS.sh
 
 ```
-cd yelp_academic_dataset_review ``
+cd yelp_academic_dataset_review
 
 sh scripts/yelp-data-upload-to-HDFS.sh <tar file path>
-
 ```
 
 ##### 3. Dockerizing Spark - Build Spark Base docker Image
@@ -107,7 +104,6 @@ docker network create spark_network;
 export PATH=$PATH:/usr/local/cassandra/bin
 
 cassandra -R &
-
 ```
 
 ##### 7. Submit Spark application
