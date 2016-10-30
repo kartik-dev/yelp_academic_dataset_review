@@ -8,11 +8,11 @@ This application uploads Yelp dataset into HDFS for analytics and use Spark SQL 
 
 yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS
 
-Spark SQL application for historical analysis of the dataset and run it as batch job periodically to reflect the changes in source dataset.
+Spark SQL application for historical analysis of the dataset and run it as batch job periodically to aggregate and store the output in cassandra.
 
-Interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
+Another interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
-Dockerized Spark base and spark driver application to be orchestrated and managed by Marathon on Mesos for better resource utilzation, high availability and fault tolerance
+Dockerized Spark base and spark driver application to be orchestrated and managed by Marathon on Mesos for better resource utilzation, high availability and fault tolerance (TBD)
 
 ### Solution Architecture
 
@@ -101,7 +101,7 @@ docker run -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMAST
 docker run -e "SPARK_CLASS=com.demo.spark.YelpTop10BusinessByCategories" -e "SPARKMASTER=local" kramalingam/spark-driver
 ```
 
-To launch spark driver on mesos spark master
+To launch spark driver on mesos spark master (not tested with SMACK Sandbox)
 ```
 docker run -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=mesos://zk://192.168.99.100:2181/mesos" kramalingam/spark-driver 
 ```
