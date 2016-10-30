@@ -4,7 +4,7 @@
 
 Yelp Dataset consists of business, reviews, users, checkins, tips from yelp. Yelp engineers have developed as excellent search engine to sift through 102 million reviews and help people find the most relevant businesses for their everyday needs.
 
-This application uploads Yelp Dataset into HDFS for analytics and use Spark SQL to query the data stored in HDFS. Apache Zeppelin for interactive data analytics and data visualization
+This application uploads Yelp dataset into HDFS for analytics and use Spark SQL to query the data stored in HDFS. Apache Zeppelin is used for interactive data analytics and data visualization
 
 yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS
 
@@ -23,15 +23,13 @@ Dockerized Spark base and spark driver application to be orchestrated and manage
 #### Setup single node SMACK sandbox virtual machine
 
 Clone SMACK vagrant repository
-
 ```
 git clone https://github.com/kartik-dev/SMACK-Sandbox.git
 ```
 
-Bring up SMACK single node VM
+Bring up SMACK sandbox
 
-This might take some time (Approx 10 to 15mins),since it downloads and installs hadoop, mesos, spark, cassandra, nifi, confluent-io platform and Zeppelin
-
+This might take some time (Approx 10 to 15mins),since it downloads and installs hadoop, mesos, spark, cassandra, nifi, confluent-io platform and Zeppelin (we might not use all the above service for this application, but it is part of the SMACK sandbox)
 ```
 cd SMACK-Sandbox
 
@@ -39,7 +37,6 @@ vagrant up
 ```
 
 Once ready, ssh to smack vm (use putty)
-
 ```
 ip: 192.168.0.50
 
@@ -48,7 +45,10 @@ username: root
 password: vagrant
 ```
 
-Please refer to https://github.com/kartik-dev/SMACK-Sandbox for more information on SMACK-Sandbox
+<b<Note:</b>
+Please refer to https://github.com/kartik-dev/SMACK-Sandbox for more information on SMACK-Sandbox and https://github.com/kartik-dev/SMACK-Sandbox/blob/master/ADVANCED.md for advanced information
+
+As of now, SMACK services needs to be started manually incase if the vagrant machine was halted. Please refer to https://github.com/kartik-dev/SMACK-Sandbox/blob/master/ManualStartScripts.md for starting services manually
 
 ## Steps to run Yelp Dataset challenge application 
 
