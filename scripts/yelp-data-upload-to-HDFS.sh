@@ -28,3 +28,5 @@ echo "Uploading files to HDFS"
 
 hdfs dfs -copyFromLocal /tmp/yelp-dataset/*.json /yelp-dataset
 
+echo "Uploaded json file to HDFS"
+

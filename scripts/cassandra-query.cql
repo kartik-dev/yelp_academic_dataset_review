@@ -6,3 +6,11 @@ CREATE TABLE reviews_fact(
   stars decimal PRIMARY KEY,
   stars_count decimal
 );
+
+CREATE TABLE top_10restaurants_(
+  name text PRIMARY KEY,
+  state text,
+  city text,
+  review_count decimal,
+  cat text
+);

@@ -100,7 +100,7 @@ docker pull kramalingam/spark-driver
 
 Now that the image is built, we just need to run it (this will launch standalone spark cluster)
 ```
-docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=local" kramalingam/spark-driver 
+docker run -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=local" kramalingam/spark-driver 
 ```
 
 To launch spark driver on mesos spark master
@@ -124,7 +124,7 @@ cd /root/yelp_academic_dataset_review
 
 docker build -t kramalingam/spark -f SparkBaseDockerImage .
 ```
-SparkBaseDockerImage - Dockerfile
+Dockerfile
 ```
 FROM java:8 
 
@@ -154,7 +154,7 @@ mvn clean compile package
 
 docker build -t kramalingam/spark-driver -f SparkDriverDockerImage .
 ```
-SparkDriverDockerImage - Dockerfile
+Dockerfile
 ```
 #using the spark-docker image we just created as our base image
 FROM kramalingam/spark
@@ -163,12 +163,12 @@ FROM kramalingam/spark
 COPY target/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar /opt/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar
 
 #calling the spark-submit command; with the --class argument being an input environment variable
-CMD /opt/spark/bin/spark-submit --class $SPARK_CLASS --master local[1] /opt/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar
+CMD /opt/spark/bin/spark-submit --class $SPARK_CLASS --master $SPARKMASTER /opt/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar
 ```
 
 Once the image is built, submit spark application. Spark application will be deployed on standalone spark.
 ```
-docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" kramalingam/spark-driver 
+docker run -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" kramalingam/spark-driver 
 ```
 
 #### To rebuild spark-zeppelin image:
