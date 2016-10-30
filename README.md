@@ -12,7 +12,7 @@ Another very interesting use-case, is to include web-based notebooks that enable
 
 Dockerize Spark base and driver program to be launched. (Docker container could be orchestrated and managed by Marathon on Mesos for better resource utilzation, high availability and fault tolerance)
 
-### Architecture
+### Solution Architecture
 
 ![alt tag](https://github.com/kartik-dev/yelp_academic_dataset_review/blob/master/scripts/Yelp_dataset_challenge_architecture.png)
 
@@ -66,15 +66,22 @@ cd /root
 git clone https://github.com/kartik-dev/yelp_academic_dataset_review.git
 ```
 
-Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
+- download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
 
-Upload dataset into HDFS with scripts/yelp-data-upload-to-HDFS.sh
-
+- uploading dataset into HDFS:
 ```
 cd yelp_academic_dataset_review
 
 sh scripts/yelp-data-upload-to-HDFS.sh <tar file path>
 ```
+
+- quick adhoc analysis with Apache Zeppelin:
+```
+docker pull kramalingam/spark-zeppelin
+
+docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
+```
+Zeppelin will be running at http://192.168.0.50:8080 and sample zeppelin notebook scripts/YelpReviewDataset.json
 
 #### 3. Dockerizing Spark - Build Spark Base docker Image
 
