@@ -2,9 +2,11 @@
 
 ### Background
 
+Yelp Dataset consists of Business, reviews, Users, checkins, tips from yelp. Yelp connects people to great local businesses. To help people find great local businesses,  Yelp engineers have developed an excellent search engine to sift through over 102 million  reviews and help people find the most relevant businesses for their everyday needs. 
+
 This application will upload Yelp Dataset into HDFS for analytics and use Spark SQL application to query the data stored in HDFS. Apache Zeppelin for interactive data analytics and data visualization
 
-Yelp Dataset consists of Business, reviews, Users, checkins, tips from yelp. yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS
+yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS
 
 Spark SQL Application for historical analysis of the dataset
 
