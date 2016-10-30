@@ -98,13 +98,14 @@ cqlsh 192.168.0.50 -f scripts/cassandra-query.cql
 
 #### To run the spark SQL application
 
+Usecase - 
 ```
 docker pull kramalingam/spark-driver
 
 docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" kramalingam/spark-driver 
 ```
 
-## Rebuild and deploy docker images
+## Rebuild and deploy Docker images
 
 #### Rebuild docker image of Spark base
 ```
@@ -128,15 +129,13 @@ RUN mv spark-2.0.0-bin-hadoop2.7 /opt/spark
 EXPOSE 8080
 ```
 
-#### Rebuild docker image of Spark Driver Application
+#### Rebuild Docker image of Spark Driver Application
 
 Note that this will take a while when you start it for the first time since it downloads and installs maven and downloads all the project’s dependencies. Every subsequent start of this build will only take a few seconds, as again everything will be already cached
 
 The pom.xml contains a very basic Maven configuration. It configures the Spark 2.0 dependencies using a Java 1.8 compiler and creates a fat jar with all the dependencies.
 
 sbt build tool could be used in place of maven. This could be easily be replaced in Dockerfile
-
-To rebuild the spark driver image
 ```
 cd /root/yelp_academic_dataset_review
 
