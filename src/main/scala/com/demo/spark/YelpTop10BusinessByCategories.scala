@@ -15,7 +15,9 @@ object YelpTop10BusinessByCategories {
 
     spark.sparkContext.setLogLevel("ERROR")
 
-    val inputDF = spark.read.json("hdfs://192.168.0.50:8020/yelp-dataset/yelp_academic_dataset_review.json")
+    val business = spark.read.json("hdfs://192.168.0.50:8020/yelp-dataset/yelp_academic_dataset_review.json")
+    
+    business.createOrReplaceTempView("business")
 
     val outputDF1 = spark.sql("SELECT name,state,city,review_count , cat FROM business LATERAL VIEW explode(categories) tab AS cat WHERE cat = 'Restaurants' ORDER BY review_count DESC LIMIT 10")
     
