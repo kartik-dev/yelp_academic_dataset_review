@@ -115,12 +115,12 @@ docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
 Zeppelin will be running at http://192.168.0.50:8080 and Please import sample zeppelin notebook from https://github.com/kartik-dev/yelp_academic_dataset_review/blob/master/scripts/Yelp-Dataset-Challenge.json
 
 ##### Yelp data challenge -use cases:
- Top 10: coolest restaurants
- Top 10: business with most of the reviews
- Top 10 review count on specific time of year
- Average Review count by Business and city
- Top 10 users by review count
- Top 10 Business by category restaurants
+1. Top 10: coolest restaurants
+2. Top 10: business with most of the reviews
+3. Top 10 review count on specific time of year
+4. Average Review count by Business and city
+5. Top 10 users by review count
+6. Top 10 Business by category restaurants
 
 ## Docker Images
 
