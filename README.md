@@ -57,7 +57,7 @@ git clone https://github.com/kartik-dev/yelp_academic_dataset_review.git
 
 #### Step 2: Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
 
-#### Step 3: Uploading dataset into HDFS
+#### Step 3: Upload dataset into HDFS
 
 This script will take .tar file as parameter and store extracted json files into HDFS
 ```
@@ -67,7 +67,7 @@ sh scripts/yelp-data-upload-to-HDFS.sh <tar file path>
 ```
 
 #### Step 4: Bring up Cassandra
-Cassandra will be used by spark application to store aggregated/output data for visualization or deeper analysis 
+Cassandra stores aggregated/output data for visualization or deeper analysis 
 ```
 export PATH=$PATH:/usr/local/cassandra/bin
 
@@ -76,19 +76,14 @@ cp /vagrant/resources/cassandra/cassandra.yaml /usr/local/cassandra/conf/
 cassandra -R &
 ```
 
-create cassandra tables used by spark application
+setup cassandra tables
 ```
 cqlsh 192.168.0.50 -f scripts/cassandra-query.cql
 ```
 
-#### Step 5: Running a Spark application with Docker
+#### Step 5: Launch Spark application (kramalingam/spark-driver image is available in docker hub)
 
-Pull kramalingam/spark-driver image from docker-io registry
-```
-docker pull kramalingam/spark-driver
-```
-
-Now that the image is built, we just need to run it (this will launch standalone spark cluster)
+Now that the image is already built, we just need to run it (this will launch standalone spark cluster)
 
 use case 1: group reviews by stars
 ```
@@ -102,20 +97,18 @@ docker run -e "SPARK_CLASS=com.demo.spark.YelpTop10BusinessByCategories" -e "SPA
 
 To launch spark driver on mesos spark master (not tested with SMACK Sandbox)
 ```
-docker run -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=mesos://zk://192.168.99.100:2181/mesos" kramalingam/spark-driver 
+docker run -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=mesos://zk://192.168.0.50:2181/mesos" kramalingam/spark-driver 
 ```
 
-#### Step 6: Interactive data analysis with Apache Zeppelin
+#### Step 6: Interactive data analysis with Apache Zeppelin ((kramalingam/spark-zeppelin image is available in docker hub))
 ```
-docker pull kramalingam/spark-zeppelin
-
-docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
+docker run --rm -p 8080:8585 kramalingam/spark-zeppelin &
 ```
-Zeppelin will be running at http://192.168.0.50:8080 and Please import sample zeppelin notebook from https://github.com/kartik-dev/yelp_academic_dataset_review/blob/master/scripts/Yelp-Dataset-Challenge.json
+Zeppelin would now run at http://192.168.0.50:8585. You could import sample zeppelin notebook from https://github.com/kartik-dev/yelp_academic_dataset_review/blob/master/scripts/Yelp-Dataset-Challenge.json
 
-##### Yelp data challenge -use cases:
-1. Top 10: coolest restaurants
-2. Top 10: business with most of the reviews
+##### Queries in "Yelp-Dataset-Challenge" notebook:
+1. Top 10 coolest restaurants
+2. Top 10 business with most of the reviews
 3. Top 10 review count on specific time of year
 4. Average Review count by Business and city
 5. Top 10 users by review count
@@ -125,9 +118,9 @@ Zeppelin will be running at http://192.168.0.50:8080 and Please import sample ze
 
 kramalingam/spark - Dockerized spark binaries as base image for driver application and zeppelin to use
 
-kramalingam/spark-zeppelin - Dockerized zeppelin for beautiful data-driven, interactive and collaborative documents with SQL, Scala
+kramalingam/spark-zeppelin - Dockerized apache zeppelin for data-driven, interactive and collaborative documents with SQL, Scala
 
-kramalingam/spark-driver - Dockerized spark driver application with YelpGroupReviewsByStars and YelpTop10BusinessByCategories jobs.
+kramalingam/spark-driver - Dockerized spark driver application with YelpGroupReviewsByStars and YelpTop10BusinessByCategories programs.
 
 ## Rebuild and deploy Docker images
 
@@ -154,11 +147,10 @@ EXPOSE 8080
 ```
 #### Rebuild Docker image of Spark Driver Application
 
-Note that this will take a while when you start it for the first time since it downloads and installs maven and downloads all the project’s dependencies. Every subsequent start of this build will only take a few seconds, as again everything will be already cached
+Note that this will take a while when you start it for the first time since it downloads and installs maven and downloads all the project’s dependencies. Every subsequent start of this build will only take few seconds, as everything is already cached
 
 The pom.xml contains a very basic Maven configuration. It configures the Spark 2.0 dependencies using a Java 1.8 compiler and creates a fat jar with all the dependencies.
 
-sbt build tool could be used in place of maven. This could be easily be replaced in Dockerfile
 ```
 cd /root/yelp_academic_dataset_review
 
@@ -242,5 +234,6 @@ CMD ["bin/zeppelin.sh"]
 
 ## Things to improve
 - [ ] Deploy spark on Mesos Marathon for better resource utilization and high availability 
-- [ ] Deploy Spark driver application with Marathon for spark driver fault tolerance and high availability  
+- [ ] Deploy Spark driver application with Marathon for spark driver fault tolerance and HA
+- [ ] Dockerize Cassandra and deploy it on Mesos
 - [ ] Use of Dataflow tools like NiFi, StreamSets for enabling accelerated data collection, curation, analysis and delivery in real-time 
