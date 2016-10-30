@@ -65,16 +65,16 @@ cd /root
 git clone https://github.com/kartik-dev/yelp_academic_dataset_review.git
 ```
 
-2. Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
+1. Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
 
-3. Uploading dataset into HDFS:
+1. Uploading dataset into HDFS:
 ```
 cd /root/yelp_academic_dataset_review
 
 sh scripts/yelp-data-upload-to-HDFS.sh <tar file path>
 ```
 
-4. Interactive data analysis with Apache Zeppelin:
+1. Interactive data analysis with Apache Zeppelin:
 ```
 docker pull kramalingam/spark-zeppelin
 
@@ -82,7 +82,7 @@ docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
 ```
 Zeppelin will be running at http://192.168.0.50:8080 and sample zeppelin notebook scripts/YelpReviewDataset.json
 
-5. Bring up Cassandra
+1. Bring up Cassandra
 ```
 export PATH=$PATH:/usr/local/cassandra/bin
 
@@ -96,13 +96,13 @@ setup cassandra tables
 cqlsh 192.168.0.50 -f scripts/cassandra-query.cql
 ```
 
-6. To run the spark SQL application
+1. To run the spark SQL application
 
 ```
 docker pull kramalingam/spark-driver
 
 docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" kramalingam/spark-driver 
-
+```
 
 ## Rebuild and deploy docker images
 
