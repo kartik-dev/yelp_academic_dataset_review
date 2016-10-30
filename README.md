@@ -2,17 +2,17 @@
 
 ### Background
 
-Yelp Dataset consists of business, reviews, users, checkins, tips from yelp. Yelp engineers have developed as excellent search engine to sift through 102 million reviews and help people find the most relevant businesses for their everyday needs.
+Yelp Dataset consists of business, reviews, users, checkins, tips from yelp. Yelp engineers have developed a excellent search engine to sift through 102 million reviews and help people find the most relevant businesses for their everyday needs.
 
-This application uploads Yelp dataset into HDFS for analytics and use Spark SQL to query the data stored in HDFS. Apache Zeppelin is used for interactive data analytics and data visualization
+This application uploads Yelp dataset into HDFS for analytics and use Spark SQL to query the data stored in HDFS. Apache Zeppelin is used for interactive data analytics and data visualization.
 
-yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS
+yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS.
 
-Spark application for historical analysis of the dataset and run it as batch job periodically to aggregate and store the output in cassandra.
+It uses spark sql to query and analysis the dataset stored in HDFS and it can be scheduled to run periodically to aggregate and store the output in Cassandra.
 
-Another interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
+Another interesting use-case is to include web-based notebooks that enables faster interactive data-analytics with apache Zeppelin.
 
-Dockerized Spark base and spark driver application to be orchestrated and managed by Marathon on Mesos for better resource utilzation, high availability and fault tolerance (TBD)
+To-be-developed: Dockerized Spark base and spark driver application to be orchestrated and managed by Marathon on Mesos for better resource utilzation, high availability and fault tolerance.
 
 ### Solution Architecture
 
@@ -20,14 +20,14 @@ Dockerized Spark base and spark driver application to be orchestrated and manage
 
 ## Installation
 
-#### Setup single node SMACK sandbox virtual machine
+### Setup single node SMACK sandbox virtual machine
 
-Clone SMACK vagrant repository
+#### Step 1: Clone SMACK vagrant repository
 ```
 git clone https://github.com/kartik-dev/SMACK-Sandbox.git
 ```
 
-Bring up SMACK sandbox
+#### Step 2: Bring up SMACK sandbox
 
 This might take some time (Approx 10 to 15mins),since it downloads and installs hadoop, mesos, spark, cassandra, nifi, confluent-io platform and Zeppelin (we might not use all the above service for this application, but it is part of the SMACK sandbox)
 ```
@@ -36,7 +36,7 @@ cd SMACK-Sandbox
 vagrant up
 ```
 
-Once ready, ssh to smack vm (use putty)
+#### Step 3: Once ready, ssh to smack vm (use putty)
 ```
 ip: 192.168.0.50
 
@@ -45,6 +45,7 @@ username: root
 password: vagrant
 ```
 
+Note:
 Please refer to https://github.com/kartik-dev/SMACK-Sandbox for more information on SMACK-Sandbox and https://github.com/kartik-dev/SMACK-Sandbox/blob/master/ADVANCED.md for advanced information
 
 As of now, SMACK services needs to be started manually incase if the vagrant machine was halted. Please refer to https://github.com/kartik-dev/SMACK-Sandbox/blob/master/ManualStartScripts.md for starting services manually
