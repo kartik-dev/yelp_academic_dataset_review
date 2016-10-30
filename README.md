@@ -103,7 +103,7 @@ docker run -e "SPARK_CLASS=com.demo.spark.YelpTop10BusinessByCategories" -e "SPA
 
 To launch spark driver on mesos spark master
 ```
-docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=mesos://zk://192.168.99.100:2181/mesos" kramalingam/spark-driver 
+docker run -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=mesos://zk://192.168.99.100:2181/mesos" kramalingam/spark-driver 
 ```
 
 #### Step 6: Interactive data analysis with Apache Zeppelin
