@@ -1,12 +1,12 @@
 ## Yelp Dataset Challenge
 
-### Introduction
+### Background
 
-This application will upload yelp_academic_dataset_review dataset into HDFS for analytics and Spark SQL application to query the data.
+This application will upload Yelp Dataset into HDFS for analytics and use Spark SQL application to query the data stored in HDFS. Apache Zeppelin for interactive data analytics and data visualization
 
-Data set consists of Business, reviews, Users, checkins, tips from yelp. yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS
+Yelp Dataset consists of Business, reviews, Users, checkins, tips from yelp. yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS
 
-Spark Application (YelpGroupReviewsByStars) - Spark driver application will create dataframe out of json file and group the reviews by stars from yelp_academic_dataset_review.json
+Spark SQL Application for historical analysis of the dataset
 
 Another very interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
