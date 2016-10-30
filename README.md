@@ -2,17 +2,17 @@
 
 ### Background
 
-Yelp Dataset consists of Business, reviews, Users, checkins, tips from yelp. Yelp connects people to great local businesses. To help people find great local businesses, Yelp engineers have developed an excellent search engine to sift through over 102 million reviews and help people find the most relevant businesses for their everyday needs.
+Yelp Dataset consists of Business, reviews, Users, checkins, tips from yelp. Yelp engineers have developed as excellent search engine to sift through 102 million reviews and help people find the most relevant businesses for their everyday needs.
 
-This application will upload Yelp Dataset into HDFS for analytics and use Spark SQL application to query the data stored in HDFS. Apache Zeppelin for interactive data analytics and data visualization
+This application uploads Yelp Dataset into HDFS for analytics and use Spark SQL to query the data stored in HDFS. Apache Zeppelin for interactive data analytics and data visualization
 
 yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS
 
 Spark SQL Application for historical analysis of the dataset
 
-Another very interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
+Interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
-Dockerize Spark base and driver program to be launched. (Docker container could be orchestrated and managed by Marathon on Mesos for better resource utilzation, high availability and fault tolerance)
+Dockerized Spark base and driver program to be launched. (Docker container could be orchestrated and managed by Marathon on Mesos for better resource utilzation, high availability and fault tolerance)
 
 ### Solution Architecture
 
@@ -82,9 +82,10 @@ docker pull kramalingam/spark-zeppelin
 
 docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
 ```
-Zeppelin will be running at http://192.168.0.50:8080 and sample zeppelin notebook scripts/YelpReviewDataset.json
+Zeppelin will be running at http://192.168.0.50:8080 and Please import sample zeppelin notebook from https://github.com/kartik-dev/yelp_academic_dataset_review/blob/master/scripts/Yelp-Dataset-Challenge.json
 
 #### Bring up Cassandra
+Cassandra will be used by spark application to store aggregated/output data for visualization or deeper analysis 
 ```
 export PATH=$PATH:/usr/local/cassandra/bin
 
@@ -93,18 +94,26 @@ cp /vagrant/resources/cassandra/cassandra.yaml /usr/local/cassandra/conf/
 cassandra -R &
 ```
 
-setup cassandra tables
+create cassandra tables used by spark application
 ```
 cqlsh 192.168.0.50 -f scripts/cassandra-query.cql
 ```
 
-#### To run the spark SQL application
+#### Running a Spark application with Docker
 
-Usecase - 
+Pull kramalingam/spark-driver image from docker-io registry
 ```
 docker pull kramalingam/spark-driver
+```
 
-docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" kramalingam/spark-driver 
+Now that the image is built, we just need to run it (this will launch standalone spark cluster)
+```
+docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=local" kramalingam/spark-driver 
+```
+
+To launch spark driver on mesos spark master
+```
+docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=mesos://zk://192.168.99.100:2181/mesos" kramalingam/spark-driver 
 ```
 
 ## Rebuild and deploy Docker images
@@ -213,7 +222,7 @@ WORKDIR $ZEPPELIN_HOME
 CMD ["bin/zeppelin.sh"]
 ```
 
-## Use cases
+## Advanced analytics Use cases (Spark MLlib could be leveraged for this)
 - Review Rating Prediction 
 - Sentiment Analysis
 - Natural Language Processing (NLP)
