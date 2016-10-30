@@ -18,7 +18,7 @@ mkdir /tmp/yelp-dataset
 
 echo " Extract tar file"
 
-tar xvf $1 -C /tmp/yelp-dataset/
+tar xf $1 -C /tmp/yelp-dataset/
 
 echo "Creating HDFS directory"
 
