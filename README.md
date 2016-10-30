@@ -205,11 +205,13 @@ RUN set -ex \
  && rm -rf /root/.npm \
  && rm -rf /tmp/*
 
+ADD scripts/Yelp-Dataset-Challenge.json $ZEPPELIN_NOTEBOOK_DIR/2BTRWA9EV/Yelp-Dataset-Challenge.json
+
 WORKDIR $ZEPPELIN_HOME
 CMD ["bin/zeppelin.sh"]
 ```
 
-## Use cases:
+## Use cases
 - Review Rating Prediction 
 - Sentiment Analysis
 - Natural Language Processing (NLP)
