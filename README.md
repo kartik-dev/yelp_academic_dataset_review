@@ -60,31 +60,23 @@ Please refer to https://github.com/kartik-dev/SMACK-Sandbox for more information
 
 ## Steps to run Yelp Dataset challenge application 
 
-#### Clone yelp_academic_dataset_review repository
+#### Step 1: Clone yelp_academic_dataset_review repository
 ```
 cd /root
 
 git clone https://github.com/kartik-dev/yelp_academic_dataset_review.git
 ```
 
-#### Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
+#### Step 2: Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
 
-#### Uploading dataset into HDFS
+#### Step 3: Uploading dataset into HDFS
 ```
 cd /root/yelp_academic_dataset_review
 
 sh scripts/yelp-data-upload-to-HDFS.sh <tar file path>
 ```
 
-#### Interactive data analysis with Apache Zeppelin
-```
-docker pull kramalingam/spark-zeppelin
-
-docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
-```
-Zeppelin will be running at http://192.168.0.50:8080 and Please import sample zeppelin notebook from https://github.com/kartik-dev/yelp_academic_dataset_review/blob/master/scripts/Yelp-Dataset-Challenge.json
-
-#### Bring up Cassandra
+#### Step 4: Bring up Cassandra
 Cassandra will be used by spark application to store aggregated/output data for visualization or deeper analysis 
 ```
 export PATH=$PATH:/usr/local/cassandra/bin
@@ -99,7 +91,7 @@ create cassandra tables used by spark application
 cqlsh 192.168.0.50 -f scripts/cassandra-query.cql
 ```
 
-#### Running a Spark application with Docker
+#### Step 5: Running a Spark application with Docker
 
 Pull kramalingam/spark-driver image from docker-io registry
 ```
@@ -115,6 +107,14 @@ To launch spark driver on mesos spark master
 ```
 docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=mesos://zk://192.168.99.100:2181/mesos" kramalingam/spark-driver 
 ```
+
+#### Step 6: Interactive data analysis with Apache Zeppelin
+```
+docker pull kramalingam/spark-zeppelin
+
+docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
+```
+Zeppelin will be running at http://192.168.0.50:8080 and Please import sample zeppelin notebook from https://github.com/kartik-dev/yelp_academic_dataset_review/blob/master/scripts/Yelp-Dataset-Challenge.json
 
 ## Rebuild and deploy Docker images
 
