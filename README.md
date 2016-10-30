@@ -14,7 +14,7 @@ Dockerize Spark base and driver program to be launched. (Docker container could 
 
 ### Architecture
 
-![alt tag](https://drive.google.com/open?id=0B0mJq-KERmYCME80VEJKVDVwRG8)
+![alt tag](https://github.com/kartik-dev/yelp_academic_dataset_review/blob/master/scripts/Yelp_dataset_challenge_architecture.png)
 
 ### SMACK Sandbox
 
