@@ -8,7 +8,7 @@ This application uploads Yelp dataset into HDFS for analytics and use Spark SQL 
 
 yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS
 
-Spark SQL application for historical analysis of the dataset and run it as batch job periodically to aggregate and store the output in cassandra.
+Spark application for historical analysis of the dataset and run it as batch job periodically to aggregate and store the output in cassandra.
 
 Another interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
@@ -91,12 +91,12 @@ docker pull kramalingam/spark-driver
 
 Now that the image is built, we just need to run it (this will launch standalone spark cluster)
 
-- group reviews by stars
+use case 1: group reviews by stars
 ```
 docker run -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=local" kramalingam/spark-driver 
 ```
 
-- top 10 business by category Restaurants
+use case 2: top 10 business by category Restaurants
 ```
 docker run -e "SPARK_CLASS=com.demo.spark.YelpTop10BusinessByCategories" -e "SPARKMASTER=local" kramalingam/spark-driver
 ```
@@ -113,6 +113,14 @@ docker pull kramalingam/spark-zeppelin
 docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
 ```
 Zeppelin will be running at http://192.168.0.50:8080 and Please import sample zeppelin notebook from https://github.com/kartik-dev/yelp_academic_dataset_review/blob/master/scripts/Yelp-Dataset-Challenge.json
+
+##### Yelp data challenge -use cases:
+Top 10: coolest restaurants
+Top 10: business with most of the reviews
+Top 10 review count on specific time of year
+Average Review count by Business and city
+Top 10 users by review count
+Top 10 Business by category restaurants
 
 ## Docker Images
 
@@ -234,6 +242,6 @@ CMD ["bin/zeppelin.sh"]
 - Social Graph Mining
 
 ## Things to improve
-- [ ] Deploy spark on Mesos Cluster Manager with Marathon for better resource utilization and high availability 
+- [ ] Deploy spark on Mesos Marathon for better resource utilization and high availability 
 - [ ] Deploy Spark driver application with Marathon for spark driver fault tolerance and high availability  
 - [ ] Use of Dataflow tools like NiFi, StreamSets for enabling accelerated data collection, curation, analysis and delivery in real-time 
