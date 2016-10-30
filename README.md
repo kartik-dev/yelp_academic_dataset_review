@@ -112,6 +112,21 @@ cd /root/yelp_academic_dataset_review
 
 docker build -t kramalingam/spark -f SparkBaseDockerImage .
 ```
+SparkBaseDockerImage - Dockerfile
+```
+FROM java:8 
+
+RUN apt-get update
+RUN apt-get install -y maven
+
+RUN wget http://d3kbcqa49mib13.cloudfront.net/spark-2.0.0-bin-hadoop2.7.tgz
+
+RUN tar -xzf spark-2.0.0-bin-hadoop2.7.tgz
+
+RUN mv spark-2.0.0-bin-hadoop2.7 /opt/spark
+
+EXPOSE 8080
+```
 
 #### Rebuild docker image of Spark Driver Application
 
@@ -128,6 +143,17 @@ cd /root/yelp_academic_dataset_review
 mvn clean compile package
 
 docker build -t kramalingam/spark-driver -f SparkDriverDockerImage .
+```
+SparkDriverDockerImage - Dockerfile
+```
+#using the spark-docker image we just created as our base image
+FROM kramalingam/spark
+
+#app.jar is our Fat Jar to be run; here we assume it’s in the same build context as the Dockerfile;
+COPY target/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar /opt/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar
+
+#calling the spark-submit command; with the --class argument being an input environment variable
+CMD /opt/spark/bin/spark-submit --class $SPARK_CLASS --master local[1] /opt/yelp-academic-dataset-review-0.7-jar-with-dependencies.jar
 ```
 
 Once the image is built, submit spark application. Spark application will be deployed on standalone spark.
