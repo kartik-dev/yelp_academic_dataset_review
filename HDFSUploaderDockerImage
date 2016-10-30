@@ -1,6 +1,0 @@
-FROM java:8 
-
-#!/usr/bin/env bash
-echo $1
-
-

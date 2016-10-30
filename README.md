@@ -45,7 +45,6 @@ username: root
 password: vagrant
 ```
 
-<b<Note:</b>
 Please refer to https://github.com/kartik-dev/SMACK-Sandbox for more information on SMACK-Sandbox and https://github.com/kartik-dev/SMACK-Sandbox/blob/master/ADVANCED.md for advanced information
 
 As of now, SMACK services needs to be started manually incase if the vagrant machine was halted. Please refer to https://github.com/kartik-dev/SMACK-Sandbox/blob/master/ManualStartScripts.md for starting services manually
@@ -115,6 +114,14 @@ docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
 ```
 Zeppelin will be running at http://192.168.0.50:8080 and Please import sample zeppelin notebook from https://github.com/kartik-dev/yelp_academic_dataset_review/blob/master/scripts/Yelp-Dataset-Challenge.json
 
+## Docker Images
+
+kramalingam/spark - Dockerized spark binaries as base image for driver application and zeppelin to use
+
+kramalingam/spark-zeppelin - Dockerized zeppelin for beautiful data-driven, interactive and collaborative documents with SQL, Scala
+
+kramalingam/spark-driver - Dockerized spark driver application with YelpGroupReviewsByStars and YelpTop10BusinessByCategories jobs.
+
 ## Rebuild and deploy Docker images
 
 #### Rebuild docker image of Spark base
@@ -138,14 +145,6 @@ RUN mv spark-2.0.0-bin-hadoop2.7 /opt/spark
 
 EXPOSE 8080
 ```
-## Docker Images
-
-kramalingam/spark - Dockerized spark binaries as base image for driver application and zeppelin to use
-
-kramalingam/spark-zeppelin - Dockerized zeppelin for beautiful data-driven, interactive and collaborative documents with SQL, Scala
-
-kramalingam/spark-driver - Dockerized spark driver application with YelpGroupReviewsByStars and YelpTop10BusinessByCategories jobs.
-
 #### Rebuild Docker image of Spark Driver Application
 
 Note that this will take a while when you start it for the first time since it downloads and installs maven and downloads all the project’s dependencies. Every subsequent start of this build will only take a few seconds, as again everything will be already cached
