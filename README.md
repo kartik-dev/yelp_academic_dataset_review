@@ -99,8 +99,15 @@ docker pull kramalingam/spark-driver
 ```
 
 Now that the image is built, we just need to run it (this will launch standalone spark cluster)
+
+- group reviews by stars
 ```
 docker run -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" -e "SPARKMASTER=local" kramalingam/spark-driver 
+```
+
+- top 10 business by category Restaurants
+```
+docker run -e "SPARK_CLASS=com.demo.spark.YelpTop10BusinessByCategories" -e "SPARKMASTER=local" kramalingam/spark-driver
 ```
 
 To launch spark driver on mesos spark master
