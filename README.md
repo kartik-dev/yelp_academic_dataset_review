@@ -106,7 +106,7 @@ docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsBy
 
 ## Rebuild and deploy docker images
 
-#### Rebuild Spark base image
+#### Rebuild docker image of Spark base
 ```
 cd /root/yelp_academic_dataset_review
 
@@ -121,7 +121,7 @@ The pom.xml contains a very basic Maven configuration. It configures the Spark 2
 
 sbt build tool could be used in place of maven. This could be easily be replaced in Dockerfile
 
-To rebuild the spark driver image:
+To rebuild the spark driver image
 ```
 cd /root/yelp_academic_dataset_review
 
@@ -130,11 +130,58 @@ mvn clean compile package
 docker build -t kramalingam/spark-driver -f SparkDriverDockerImage .
 ```
 
-Once the image is built, submit spark application. Spark application will be deployed on standalone spark. This could be changed by changing the spark master URL
+Once the image is built, submit spark application. Spark application will be deployed on standalone spark.
+```
+docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsByStars" kramalingam/spark-driver 
+```
 
 #### To rebuild spark-zeppelin image:
+
 ```
 docker build -t kramalingam/spark-zeppelin -f SparkZeppelinDockerImage .
+```
+
+Dockerfile
+```
+#using the spark-docker image we just created as our base image
+FROM kramalingam/spark
+
+# Zeppelin
+ENV ZEPPELIN_PORT 8080
+ENV ZEPPELIN_HOME /usr/zeppelin
+ENV ZEPPELIN_CONF_DIR $ZEPPELIN_HOME/conf
+ENV ZEPPELIN_NOTEBOOK_DIR $ZEPPELIN_HOME/notebook
+ENV ZEPPELIN_COMMIT 22bd851047c4ada20108754f3d15fbd8fe7b065a
+
+RUN set -ex \
+ && buildDeps=' \
+    bzip2 \
+ ' \
+ && apt-get update && apt-get install -y --no-install-recommends $buildDeps \
+ && curl -sL http://archive.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz \
+   | gunzip \
+   | tar x -C /tmp/ \
+ && git clone https://github.com/apache/zeppelin.git /usr/src/zeppelin \
+ && cd /usr/src/zeppelin \
+ && git checkout -q $ZEPPELIN_COMMIT \
+ && dev/change_scala_version.sh "2.11" \
+ && sed -i 's/--no-color/buildSkipTests --no-color/' zeppelin-web/pom.xml \
+ && MAVEN_OPTS="-Xms512m -Xmx1024m" /tmp/apache-maven-3.3.9/bin/mvn --batch-mode package -DskipTests -Pscala-2.11 -Pbuild-distr \
+  -pl 'zeppelin-interpreter,zeppelin-zengine,zeppelin-display,spark-dependencies,spark,markdown,angular,shell,hbase,postgresql,jdbc,python,elasticsearch,zeppelin-web,zeppelin-server,zeppelin-distribution' \
+ && tar xvf /usr/src/zeppelin/zeppelin-distribution/target/zeppelin*.tar.gz -C /usr/ \
+ && mv /usr/zeppelin* $ZEPPELIN_HOME \
+ && mkdir -p $ZEPPELIN_HOME/logs \
+ && mkdir -p $ZEPPELIN_HOME/run \
+ && rm -rf $ZEPPELIN_NOTEBOOK_DIR/2BWJFTXKJ \
+ && apt-get purge -y --auto-remove $buildDeps \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm -rf /usr/src/zeppelin \
+ && rm -rf /root/.m2 \
+ && rm -rf /root/.npm \
+ && rm -rf /tmp/*
+
+WORKDIR $ZEPPELIN_HOME
+CMD ["bin/zeppelin.sh"]
 ```
 
 ## Use cases:
