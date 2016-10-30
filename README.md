@@ -2,21 +2,19 @@
 
 ### Introduction
 
-This application uploads yelp_academic_dataset_review dataset into HDFS for analytics and create spark dataframe to query the data.
+This application will upload yelp_academic_dataset_review dataset into HDFS for analytics and Spark SQL application to query the data.
 
-<b>yelp-data-upload-to-HDFS.sh</b> script will take dataset tar file as parameter and upload extracted json files to HDFS
+yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS
+
+YelpGroupReviewsByStars - Spark driver application will create dataframe out of json file and group the reviews by stars from yelp_academic_dataset_review.json
 
 Another very interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
+Dockerize Spark base and driver program to be launched. (Docker container could be orchestrated and managed by Marathon on Mesos for better resource utilzation, high availability and fault tolerance)
+
 ### Architecture
 
-Current Architecture Design:
-
-HDFS => Spark => Cassandra => Visualization Tool
-
-Proposed Future Architecture:
-
-Yelp => Kafka => Spark Streaming => Cassandra/HDFS => Visualization Tools 
+![alt tag](https://drive.google.com/open?id=0B0mJq-KERmYCME80VEJKVDVwRG8)
 
 ### SMACK Sandbox
 
@@ -102,7 +100,7 @@ cassandra -R &
 setup cassandra tables
 
 ```
- cqlsh 192.168.0.50 -f scripts/cassandra-query.cql
+cqlsh 192.168.0.50 -f scripts/cassandra-query.cql
 ```
 
 #### 5. Dockerizing Spark Driver - Build docker image of Spark Driver Application
@@ -136,7 +134,7 @@ docker build -t kramalingam/spark-driver -f SparkDriverDockerImage .
 ```
 Once the image is built, submit spark application. Spark application will be deployed on standalone spark. This could be changed by changing the spark master URL
 
-#### 6. Build and run spark-zeppelin container for adhoc analysis
+#### 6. Build and run Apache Zeppelin container for adhoc analysis
 ```
 docker pull kramalingam/spark-zeppelin
 
@@ -144,7 +142,7 @@ docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
 ```
 Zeppelin will be running at http://192.168.0.50:8080 and sample zeppelin notebook scripts/YelpReviewDataset.json
 
-To build the image locally:
+To rebuild the image locally:
 ```
 docker build -t kramalingam/spark-zeppelin -f SparkZeppelinDockerImage .
 ```
