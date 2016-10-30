@@ -7,7 +7,7 @@ CREATE TABLE reviews_fact(
   stars_count decimal
 );
 
-CREATE TABLE top_10restaurants_(
+CREATE TABLE top_10restaurants(
   name text PRIMARY KEY,
   state text,
   city text,

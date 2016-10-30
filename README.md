@@ -2,29 +2,21 @@
 
 ### Background
 
-Yelp Dataset consists of Business, reviews, Users, checkins, tips from yelp. Yelp engineers have developed as excellent search engine to sift through 102 million reviews and help people find the most relevant businesses for their everyday needs.
+Yelp Dataset consists of business, reviews, users, checkins, tips from yelp. Yelp engineers have developed as excellent search engine to sift through 102 million reviews and help people find the most relevant businesses for their everyday needs.
 
 This application uploads Yelp Dataset into HDFS for analytics and use Spark SQL to query the data stored in HDFS. Apache Zeppelin for interactive data analytics and data visualization
 
 yelp-data-upload-to-HDFS.sh script will take dataset tar file as parameter and upload extracted json files to HDFS
 
-Spark SQL Application for historical analysis of the dataset
+Spark SQL application for historical analysis of the dataset and run it as batch job periodically to reflect the changes in source dataset.
 
 Interesting use-case, is to include web-based notebooks that enables faster interactive data-analytics than the Spark-shell like Zeppelin
 
-Dockerized Spark base and driver program to be launched. (Docker container could be orchestrated and managed by Marathon on Mesos for better resource utilzation, high availability and fault tolerance)
+Dockerized Spark base and spark driver application to be orchestrated and managed by Marathon on Mesos for better resource utilzation, high availability and fault tolerance
 
 ### Solution Architecture
 
 ![alt tag](https://github.com/kartik-dev/yelp_academic_dataset_review/blob/master/scripts/Yelp_dataset_challenge_architecture.png)
-
-## Docker Images
-
-kramalingam/spark - Dockerized spark binaries as base image for driver application to use
-
-kramalingam/spark-zeppelin - Dockerized zeppelin for beautiful data-driven, interactive and collaborative documents with SQL, Scala
-
-kramalingam/spark-driver - Dockerized spark driver application with 
 
 ## Installation
 
@@ -146,6 +138,13 @@ RUN mv spark-2.0.0-bin-hadoop2.7 /opt/spark
 
 EXPOSE 8080
 ```
+## Docker Images
+
+kramalingam/spark - Dockerized spark binaries as base image for driver application and zeppelin to use
+
+kramalingam/spark-zeppelin - Dockerized zeppelin for beautiful data-driven, interactive and collaborative documents with SQL, Scala
+
+kramalingam/spark-driver - Dockerized spark driver application with YelpGroupReviewsByStars and YelpTop10BusinessByCategories jobs.
 
 #### Rebuild Docker image of Spark Driver Application
 
