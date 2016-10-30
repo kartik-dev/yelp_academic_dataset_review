@@ -58,23 +58,23 @@ Please refer to https://github.com/kartik-dev/SMACK-Sandbox for more information
 
 ## Steps to run Yelp Dataset challenge application 
 
-1. Clone yelp_academic_dataset_review repository
+#### Clone yelp_academic_dataset_review repository
 ```
 cd /root
 
 git clone https://github.com/kartik-dev/yelp_academic_dataset_review.git
 ```
 
-1. Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
+#### Download yelp dataset from https://www.yelp.com/dataset_challenge/dataset
 
-1. Uploading dataset into HDFS:
+#### Uploading dataset into HDFS
 ```
 cd /root/yelp_academic_dataset_review
 
 sh scripts/yelp-data-upload-to-HDFS.sh <tar file path>
 ```
 
-1. Interactive data analysis with Apache Zeppelin:
+#### Interactive data analysis with Apache Zeppelin
 ```
 docker pull kramalingam/spark-zeppelin
 
@@ -82,7 +82,7 @@ docker run --rm -p 8080:8080 kramalingam/spark-zeppelin &
 ```
 Zeppelin will be running at http://192.168.0.50:8080 and sample zeppelin notebook scripts/YelpReviewDataset.json
 
-1. Bring up Cassandra
+#### Bring up Cassandra
 ```
 export PATH=$PATH:/usr/local/cassandra/bin
 
@@ -96,7 +96,7 @@ setup cassandra tables
 cqlsh 192.168.0.50 -f scripts/cassandra-query.cql
 ```
 
-1. To run the spark SQL application
+#### To run the spark SQL application
 
 ```
 docker pull kramalingam/spark-driver
@@ -106,14 +106,14 @@ docker run --net spark_network -e "SPARK_CLASS=com.demo.spark.YelpGroupReviewsBy
 
 ## Rebuild and deploy docker images
 
--- Rebuild Spark base image
+#### Rebuild Spark base image
 ```
 cd /root/yelp_academic_dataset_review
 
 docker build -t kramalingam/spark -f SparkBaseDockerImage .
 ```
 
--- Rebuild docker image of Spark Driver Application
+#### Rebuild docker image of Spark Driver Application
 
 Note that this will take a while when you start it for the first time since it downloads and installs maven and downloads all the project’s dependencies. Every subsequent start of this build will only take a few seconds, as again everything will be already cached
 
@@ -132,7 +132,7 @@ docker build -t kramalingam/spark-driver -f SparkDriverDockerImage .
 
 Once the image is built, submit spark application. Spark application will be deployed on standalone spark. This could be changed by changing the spark master URL
 
-To rebuild spark-zeppelin image:
+#### To rebuild spark-zeppelin image:
 ```
 docker build -t kramalingam/spark-zeppelin -f SparkZeppelinDockerImage .
 ```
